@@ -12,7 +12,7 @@ function TestModuleComponent({ config }) {
           {config?.description || '这是一个可拖拽和缩放的测试模块'}
         </Text>
       </Box>
-      
+
       <Box>
         <Text fontSize="sm" fontWeight="medium" mb={2}>
           自定义消息:
@@ -21,7 +21,7 @@ function TestModuleComponent({ config }) {
           {config?.message || 'Hello from Test Module!'}
         </Text>
       </Box>
-      
+
       <Box>
         <Text fontSize="sm" fontWeight="medium" mb={2}>
           进度示例:
@@ -31,15 +31,21 @@ function TestModuleComponent({ config }) {
           {config?.progress || 65}% 完成
         </Text>
       </Box>
-      
+
       <Box>
         <Text fontSize="sm" fontWeight="medium" mb={2}>
           标签示例:
         </Text>
         <Box>
-          <Badge colorScheme="green" mr={2} mb={1}>React</Badge>
-          <Badge colorScheme="blue" mr={2} mb={1}>Grid</Badge>
-          <Badge colorScheme="purple" mb={1}>Layout</Badge>
+          <Badge colorScheme="green" mr={2} mb={1}>
+            React
+          </Badge>
+          <Badge colorScheme="blue" mr={2} mb={1}>
+            Grid
+          </Badge>
+          <Badge colorScheme="purple" mb={1}>
+            Layout
+          </Badge>
         </Box>
       </Box>
     </VStack>
@@ -50,20 +56,20 @@ export const module = {
   id: 'TestModule',
   name: '测试模块',
   component: TestModuleComponent,
-  defaultConfig: { 
+  defaultConfig: {
     title: '测试模块',
     description: '这是一个可拖拽和缩放的测试模块',
     message: 'Hello from Test Module!',
-    progress: 65
+    progress: 65,
   },
-  configSchema: { 
-    type: 'object', 
-    properties: { 
+  configSchema: {
+    type: 'object',
+    properties: {
       title: { type: 'string' },
       description: { type: 'string' },
       message: { type: 'string' },
-      progress: { type: 'number' }
-    } 
+      progress: { type: 'number' },
+    },
   },
 };
 

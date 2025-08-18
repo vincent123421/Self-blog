@@ -8,24 +8,27 @@ const Dashboard = () => {
   const [modules, setModules] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const moduleIds = ['TestModule', 'ClockModule'];
+  const moduleIds = ['TestModule', 'ClockModule', 'WelcomeModule'];
 
   useEffect(() => {
     let mounted = true;
-    
+
     const loadModules = async () => {
       try {
-        const modulePromises = moduleIds.map(id => ModuleLoader.load(id));
+        const modulePromises = moduleIds.map((id) => ModuleLoader.load(id));
         const loadedModules = await Promise.all(modulePromises);
-        
+
         if (!mounted) return;
-        
+
         // 确保有配置保存用于演示
-        loadedModules.forEach(moduleDef => {
-          const existing = loadConfig(moduleDef.id, moduleDef.defaultConfig || {});
+        loadedModules.forEach((moduleDef) => {
+          const existing = loadConfig(
+            moduleDef.id,
+            moduleDef.defaultConfig || {}
+          );
           saveConfig(moduleDef.id, existing);
         });
-        
+
         setModules(loadedModules);
       } catch (e) {
         if (!mounted) return;
@@ -38,7 +41,7 @@ const Dashboard = () => {
     };
 
     loadModules();
-    
+
     return () => {
       mounted = false;
     };
@@ -73,8 +76,8 @@ const Dashboard = () => {
 
       {!loading && !error && modules.length > 0 && (
         <Box>
-          <ConfigurableGridLayout 
-            modules={modules} 
+          <ConfigurableGridLayout
+            modules={modules}
             onLayoutChange={handleLayoutChange}
             isEditable={false}
             showSettings={false}
@@ -100,7 +103,9 @@ const Dashboard = () => {
         <Box>
           <Text fontWeight="bold">当前加载的模块：</Text>
           <Text fontSize="sm">
-            {modules.map(module => `• ${module.name} (${module.id})`).join('\n')}
+            {modules
+              .map((module) => `• ${module.name} (${module.id})`)
+              .join('\n')}
           </Text>
         </Box>
       </Alert>

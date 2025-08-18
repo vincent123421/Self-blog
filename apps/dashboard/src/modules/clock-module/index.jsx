@@ -18,7 +18,7 @@ function ClockModuleComponent({ config }) {
       hour12: false,
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit'
+      second: '2-digit',
     });
   };
 
@@ -27,7 +27,7 @@ function ClockModuleComponent({ config }) {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-      weekday: 'long'
+      weekday: 'long',
     });
   };
 
@@ -39,16 +39,21 @@ function ClockModuleComponent({ config }) {
           {config?.title || '实时时钟'}
         </Text>
       </HStack>
-      
+
       <Box textAlign="center">
-        <Text fontSize="2xl" fontWeight="bold" color="gray.800" fontFamily="mono">
+        <Text
+          fontSize="2xl"
+          fontWeight="bold"
+          color="gray.800"
+          fontFamily="mono"
+        >
           {formatTime(time)}
         </Text>
         <Text fontSize="sm" color="gray.600" mt={1}>
           {formatDate(time)}
         </Text>
       </Box>
-      
+
       {config?.showSeconds !== false && (
         <Box>
           <Text fontSize="xs" color="gray.500">
@@ -56,7 +61,7 @@ function ClockModuleComponent({ config }) {
           </Text>
         </Box>
       )}
-      
+
       <Box>
         <Text fontSize="xs" color="gray.500">
           {config?.description || '当前时间'}
@@ -70,18 +75,18 @@ export const module = {
   id: 'ClockModule',
   name: '时钟模块',
   component: ClockModuleComponent,
-  defaultConfig: { 
+  defaultConfig: {
     title: '实时时钟',
     description: '当前时间',
-    showSeconds: true
+    showSeconds: true,
   },
-  configSchema: { 
-    type: 'object', 
-    properties: { 
+  configSchema: {
+    type: 'object',
+    properties: {
       title: { type: 'string' },
       description: { type: 'string' },
-      showSeconds: { type: 'boolean' }
-    } 
+      showSeconds: { type: 'boolean' },
+    },
   },
 };
 

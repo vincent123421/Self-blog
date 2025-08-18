@@ -7,9 +7,7 @@ const Layout = ({ children }) => {
     <Flex direction="column" minH="100vh">
       <Header />
       <Box flex="1" py={8}>
-        <Container maxW="container.xl">
-          {children}
-        </Container>
+        <Container maxW="container.xl">{children}</Container>
       </Box>
       <Footer />
     </Flex>

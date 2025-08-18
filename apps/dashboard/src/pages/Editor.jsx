@@ -1,4 +1,13 @@
-import { Box, Text, VStack, Alert, AlertIcon, Spinner, HStack, Button } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  VStack,
+  Alert,
+  AlertIcon,
+  Spinner,
+  HStack,
+  Button,
+} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModuleLoader from '../core/module-loader';
@@ -9,24 +18,27 @@ const Editor = () => {
   const [modules, setModules] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const moduleIds = ['TestModule', 'ClockModule'];
+  const moduleIds = ['TestModule', 'ClockModule', 'WelcomeModule'];
 
   useEffect(() => {
     let mounted = true;
-    
+
     const loadModules = async () => {
       try {
-        const modulePromises = moduleIds.map(id => ModuleLoader.load(id));
+        const modulePromises = moduleIds.map((id) => ModuleLoader.load(id));
         const loadedModules = await Promise.all(modulePromises);
-        
+
         if (!mounted) return;
-        
+
         // 确保有配置保存用于演示
-        loadedModules.forEach(moduleDef => {
-          const existing = loadConfig(moduleDef.id, moduleDef.defaultConfig || {});
+        loadedModules.forEach((moduleDef) => {
+          const existing = loadConfig(
+            moduleDef.id,
+            moduleDef.defaultConfig || {}
+          );
           saveConfig(moduleDef.id, existing);
         });
-        
+
         setModules(loadedModules);
       } catch (e) {
         if (!mounted) return;
@@ -39,7 +51,7 @@ const Editor = () => {
     };
 
     loadModules();
-    
+
     return () => {
       mounted = false;
     };
@@ -55,18 +67,14 @@ const Editor = () => {
         <Text fontSize="2xl" mb={4}>
           模块编辑器
         </Text>
-        <Text color="gray.600">
-          拖拽和配置你的个人主页模块
-        </Text>
+        <Text color="gray.600">拖拽和配置你的个人主页模块</Text>
       </Box>
 
       <HStack justify="center" spacing={4}>
         <Button as={Link} to="/" colorScheme="blue" variant="outline">
           预览效果
         </Button>
-        <Button colorScheme="green">
-          保存配置
-        </Button>
+        <Button colorScheme="green">保存配置</Button>
       </HStack>
 
       {error && (
@@ -85,15 +93,15 @@ const Editor = () => {
 
       {!loading && !error && modules.length > 0 && (
         <Box>
-          <ConfigurableGridLayout 
-            modules={modules} 
+          <ConfigurableGridLayout
+            modules={modules}
             onLayoutChange={handleLayoutChange}
             isEditable={true}
             showSettings={true}
           />
         </Box>
       )}
-      
+
       <Alert status="info">
         <AlertIcon />
         <Box>
