@@ -1,0 +1,53 @@
+.clock-module {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+}
+
+.clock-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clock-icon {
+  color: #3182ce;
+  width: 20px;
+  height: 20px;
+}
+
+.clock-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.clock-time-container {
+  text-align: center;
+}
+
+.clock-time {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a202c;
+  font-family: 'Courier New', monospace;
+}
+
+.clock-date {
+  font-size: 14px;
+  color: #718096;
+  margin-top: 4px;
+}
+
+.clock-seconds {
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.clock-description {
+  font-size: 12px;
+  color: #a0aec0;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Text, VStack, HStack, Icon } from '@chakra-ui/react';
 import { TimeIcon } from '@chakra-ui/icons';
+import './styles.css';
 
 function ClockModuleComponent({ config }) {
   const [time, setTime] = useState(new Date());
@@ -32,37 +32,33 @@ function ClockModuleComponent({ config }) {
   };
 
   return (
-    <VStack spacing={3} align="center" justify="center" height="100%">
-      <HStack spacing={2}>
-        <Icon as={TimeIcon} color="blue.500" boxSize={5} />
-        <Text fontSize="lg" fontWeight="bold" color="blue.600">
+    <div className="clock-module">
+      <div className="clock-header">
+        <TimeIcon className="clock-icon" />
+        <span className="clock-title">
           {config?.title || '实时时钟'}
-        </Text>
-      </HStack>
+        </span>
+      </div>
       
-      <Box textAlign="center">
-        <Text fontSize="2xl" fontWeight="bold" color="gray.800" fontFamily="mono">
+      <div className="clock-time-container">
+        <div className="clock-time">
           {formatTime(time)}
-        </Text>
-        <Text fontSize="sm" color="gray.600" mt={1}>
+        </div>
+        <div className="clock-date">
           {formatDate(time)}
-        </Text>
-      </Box>
+        </div>
+      </div>
       
       {config?.showSeconds !== false && (
-        <Box>
-          <Text fontSize="xs" color="gray.500">
-            秒数: {time.getSeconds()}
-          </Text>
-        </Box>
+        <div className="clock-seconds">
+          秒数: {time.getSeconds()}
+        </div>
       )}
       
-      <Box>
-        <Text fontSize="xs" color="gray.500">
-          {config?.description || '当前时间'}
-        </Text>
-      </Box>
-    </VStack>
+      <div className="clock-description">
+        {config?.description || '当前时间'}
+      </div>
+    </div>
   );
 }
 
@@ -86,3 +82,4 @@ export const module = {
 };
 
 export default module;
+

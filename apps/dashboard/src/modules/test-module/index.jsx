@@ -1,48 +1,55 @@
 import React from 'react';
-import { Box, Text, VStack, Badge, Progress } from '@chakra-ui/react';
+import './styles.css';
 
 function TestModuleComponent({ config }) {
+  const progress = config?.progress || 65;
+  
   return (
-    <VStack spacing={3} align="stretch" height="100%">
-      <Box>
-        <Text fontSize="lg" fontWeight="bold" color="blue.600">
+    <div className="test-module">
+      <div className="test-module-header">
+        <div className="test-module-title">
           {config?.title || '测试模块'}
-        </Text>
-        <Text fontSize="sm" color="gray.600" mt={1}>
+        </div>
+        <div className="test-module-description">
           {config?.description || '这是一个可拖拽和缩放的测试模块'}
-        </Text>
-      </Box>
+        </div>
+      </div>
       
-      <Box>
-        <Text fontSize="sm" fontWeight="medium" mb={2}>
+      <div className="test-module-section">
+        <div className="test-module-section-title">
           自定义消息:
-        </Text>
-        <Text fontSize="md" p={2} bg="gray.50" borderRadius="md">
+        </div>
+        <div className="test-module-message">
           {config?.message || 'Hello from Test Module!'}
-        </Text>
-      </Box>
+        </div>
+      </div>
       
-      <Box>
-        <Text fontSize="sm" fontWeight="medium" mb={2}>
+      <div className="test-module-section">
+        <div className="test-module-section-title">
           进度示例:
-        </Text>
-        <Progress value={config?.progress || 65} colorScheme="blue" size="sm" />
-        <Text fontSize="xs" color="gray.500" mt={1}>
-          {config?.progress || 65}% 完成
-        </Text>
-      </Box>
+        </div>
+        <div className="test-module-progress">
+          <div 
+            className="test-module-progress-bar" 
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+        <div className="test-module-progress-text">
+          {progress}% 完成
+        </div>
+      </div>
       
-      <Box>
-        <Text fontSize="sm" fontWeight="medium" mb={2}>
+      <div className="test-module-section">
+        <div className="test-module-section-title">
           标签示例:
-        </Text>
-        <Box>
-          <Badge colorScheme="green" mr={2} mb={1}>React</Badge>
-          <Badge colorScheme="blue" mr={2} mb={1}>Grid</Badge>
-          <Badge colorScheme="purple" mb={1}>Layout</Badge>
-        </Box>
-      </Box>
-    </VStack>
+        </div>
+        <div className="test-module-tags">
+          <span className="test-module-tag green">React</span>
+          <span className="test-module-tag blue">Grid</span>
+          <span className="test-module-tag purple">Layout</span>
+        </div>
+      </div>
+    </div>
   );
 }
 
