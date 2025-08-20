@@ -16,6 +16,8 @@
   z-index: 10;
 }
 
+
+
 /* 拖拽时的样式 */
 .react-grid-item.react-draggable-dragging {
   transition: none !important;
@@ -138,3 +140,4 @@
 .layout.dragging {
   background: linear-gradient(to bottom, #f5f5f5 0%, #f5f5f5 80%, #e2e8f0 100%);
 }
+

@@ -15,7 +15,15 @@
     "lint": "npm run lint --workspace=apps/dashboard",
     "format": "npm run format --workspace=apps/dashboard"
   },
-  "keywords": ["dashboard", "modular", "personal", "homepage"],
+  "keywords": [
+    "dashboard",
+    "modular",
+    "personal",
+    "homepage"
+  ],
   "author": "Chimera Team",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react-markdown": "^10.1.0"
+  }
 }

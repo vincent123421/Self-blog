@@ -9,7 +9,7 @@ const Editor = () => {
   const [modules, setModules] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const moduleIds = ['TestModule', 'ClockModule'];
+  const moduleIds = ['TestModule', 'ClockModule', 'WelcomeModule', 'TextCardModule'];
 
   useEffect(() => {
     let mounted = true;

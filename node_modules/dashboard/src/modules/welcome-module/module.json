@@ -1,0 +1,7 @@
+{
+  "id": "WelcomeModule",
+  "name": "欢迎模块",
+  "version": "1.0.0",
+  "description": "显示头像、姓名、职位、简介的欢迎模块",
+  "category": "basic"
+}

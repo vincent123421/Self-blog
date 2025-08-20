@@ -1,0 +1,7 @@
+{
+  "id": "ClockModule",
+  "name": "时钟模块",
+  "version": "1.0.0",
+  "description": "实时显示当前时间的时钟模块",
+  "category": "utility"
+}

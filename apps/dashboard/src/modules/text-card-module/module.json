@@ -1,0 +1,7 @@
+{
+  "id": "TextCardModule",
+  "name": "文本卡片模块",
+  "version": "1.0.0",
+  "description": "支持 Markdown 格式的富文本显示模块",
+  "category": "content"
+}
