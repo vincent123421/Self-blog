@@ -1,0 +1,30 @@
+{
+  "name": "chimera-dashboard",
+  "version": "1.0.0",
+  "description": "模块化AI驱动个人数字空间",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "modules/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/dashboard",
+    "build": "npm run build --workspace=apps/dashboard",
+    "preview": "npm run preview --workspace=apps/dashboard",
+    "lint": "npm run lint --workspace=apps/dashboard",
+    "format": "npm run format --workspace=apps/dashboard"
+  },
+  "keywords": [
+    "dashboard",
+    "modular",
+    "personal",
+    "homepage"
+  ],
+  "author": "Chimera Team",
+  "license": "MIT",
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "react-icons": "^5.5.0"
+  }
+}
