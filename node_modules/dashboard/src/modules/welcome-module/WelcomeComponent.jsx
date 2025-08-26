@@ -7,12 +7,79 @@ import {
   Avatar,
   Divider,
   Input,
+  Button,
+  IconButton,
+  Image,
+  Flex,
+  useToast,
 } from '@chakra-ui/react';
+import { LuFileImage, LuX } from 'react-icons/lu';
+
+// 头像上传管理
+const CustomFileUpload = ({ files, removeFile }) => {
+  if (!files || files.length === 0) return null;
+
+  return (
+    <Flex wrap="wrap" gap={3} mt={3}>
+      {files.map((file) => (
+        <Box
+          key={file.name}
+          position="relative"
+          w="80px"
+          h="80px"
+          borderRadius="md"
+          overflow="hidden"
+        >
+          <Image
+            src={URL.createObjectURL(file)}
+            alt={file.name}
+            objectFit="cover"
+            borderRadius="full"
+            w="full"
+            h="full"
+          />
+          <IconButton
+            aria-label="删除文件"
+            icon={<LuX />}
+            size="xs"
+            position="absolute"
+            top="1"
+            right="1"
+            colorScheme="red"
+            onClick={() => removeFile(file.name)}
+          />
+        </Box>
+      ))}
+    </Flex>
+  );
+};
 
 export default function WelcomeModuleComponent({ config, onConfigChange }) {
   const [editing, setEditing] = useState(null);
   const [value, setValue] = useState('');
+  const [files, setFiles] = useState([]);
+  const toast = useToast();
   const inputRef = useRef(null);
+
+  const handleUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      toast({
+        title: '文件类型错误',
+        description: '只能上传图片文件',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+    setFiles([file]); // 只保留1个文件
+  };
+
+  const removeFile = (fileName) => {
+    setFiles((prev) => prev.filter((file) => file.name !== fileName));
+  };
 
   const startEdit = (field) => {
     setEditing(field);
@@ -48,13 +115,24 @@ export default function WelcomeModuleComponent({ config, onConfigChange }) {
       bg="gray.50"
       borderRadius="lg"
     >
-      <HStack spacing={4} justify="center">
-        <Avatar
-          src={config.avatarUrl || 'https://via.placeholder.com/80'}
-          name={config.name || 'User'}
-          size="lg"
+      <VStack spacing={4} justify="center">
+        <Button
+          variant="outline"
+          size="sm"
+          leftIcon={<LuFileImage />}
+          onClick={() => inputRef.current.click()}
+        >
+          上传图片
+        </Button>
+        <input
+          type="file"
+          ref={inputRef}
+          accept="image/*"
+          style={{ display: 'none' }}
+          onChange={handleUpload}
         />
-      </HStack>
+        <CustomFileUpload files={files} removeFile={removeFile} />
+      </VStack>
 
       <VStack spacing={1} textAlign="center">
         {/* 姓名 */}
