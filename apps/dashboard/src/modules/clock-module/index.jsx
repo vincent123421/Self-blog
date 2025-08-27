@@ -70,6 +70,8 @@ export const module = {
   id: 'ClockModule',
   name: '时钟模块',
   component: ClockModuleComponent,
+  defaultSize: { w: 3, h: 2 },
+  minSize: { w: 2, h: 2 },
   defaultConfig: { 
     title: '实时时钟',
     description: '当前时间',

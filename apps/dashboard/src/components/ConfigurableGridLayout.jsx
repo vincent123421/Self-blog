@@ -103,12 +103,12 @@ const ConfigurableGridLayout = React.forwardRef(
     const generateDefaultLayout = useCallback(() => {
       return modules.map((module, index) => ({
         i: module.id,
-        x: (index * 2) % 12,
-        y: Math.floor(index / 6),
-        w: 2,
-        h: 2,
-        minW: 1,
-        minH: 1,
+        x: (index * (module.defaultSize?.w || 2)) % 12,
+        y: Math.floor(index / (12 / (module.defaultSize?.w || 2))),
+        w: module.defaultSize?.w || 2,
+        h: module.defaultSize?.h || 2,
+        minW: module.minSize?.w || 1,
+        minH: module.minSize?.h || 1,
       }));
     }, [modules]);
 
@@ -184,9 +184,6 @@ const ConfigurableGridLayout = React.forwardRef(
   }
 );
 
-// 把原来的 export default ConfigurableGridLayout;
-// 改成：
+ConfigurableGridLayout.displayName = 'ConfigurableGridLayout';
 
-export default React.forwardRef((props, ref) => {
-  return <ConfigurableGridLayout {...props} forwardedRef={ref} />;
-});
+export default ConfigurableGridLayout;

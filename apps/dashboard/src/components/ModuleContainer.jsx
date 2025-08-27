@@ -56,6 +56,7 @@ const ModuleContainer = ({ module, showSettings = true }) => {
         height="100%"
         display="flex"
         flexDirection="column"
+        overflow="hidden"
       >
         <HStack justify="space-between" mb={3}>
           <Text fontWeight="bold" fontSize="md" color="gray.700">
@@ -73,8 +74,8 @@ const ModuleContainer = ({ module, showSettings = true }) => {
           )}
         </HStack>
         
-        <Box flex="1" overflow="hidden">
-          <module.component config={config} />
+        <Box flex="1" overflow="hidden" minH="0">
+          <module.component config={config} showSettings={showSettings} />
         </Box>
       </Box>
 

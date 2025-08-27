@@ -5,6 +5,8 @@ export default {
   id: 'WelcomeModule',
   name: '欢迎卡片',
   component: WelcomeModuleComponent,
+  defaultSize: { w: 4, h: 3 },
+  minSize: { w: 3, h: 2 },
   defaultConfig: {
     name: '张三',
     title: '前端工程师 | 技术博主',

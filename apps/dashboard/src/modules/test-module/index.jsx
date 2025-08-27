@@ -50,6 +50,8 @@ export const module = {
   id: 'TestModule',
   name: '测试模块',
   component: TestModuleComponent,
+  defaultSize: { w: 3, h: 3 },
+  minSize: { w: 2, h: 2 },
   defaultConfig: { 
     title: '测试模块',
     description: '这是一个可拖拽和缩放的测试模块',

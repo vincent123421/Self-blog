@@ -8,6 +8,7 @@ import {
   Spinner,
   HStack,
   Button,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { useEffect, useState, useRef } from 'react';
 import html2canvas from 'html2canvas';
@@ -22,6 +23,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const moduleIds = ['TestModule', 'ClockModule', 'WelcomeModule'];
   const modulesRef = useRef(null);
+  const bgColor = useColorModeValue('white', 'gray.900');
 
   useEffect(() => {
     let mounted = true;
@@ -81,7 +83,7 @@ const Dashboard = () => {
       const canvas = await html2canvas(modulesRef.current, {
         scale: 2,
         useCORS: true,
-        backgroundColor: useColorModeValue('white', 'gray.900'),
+        backgroundColor: bgColor,
         logging: false,
         imageTimeout: 15000,
         allowTaint: true,

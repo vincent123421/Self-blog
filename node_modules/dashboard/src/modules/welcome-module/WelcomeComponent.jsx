@@ -54,7 +54,7 @@ const CustomFileUpload = ({ files, removeFile }) => {
   );
 };
 
-export default function WelcomeModuleComponent({ config, onConfigChange }) {
+export default function WelcomeModuleComponent({ config, onConfigChange, showSettings = true }) {
   const [editing, setEditing] = useState(null);
   const [value, setValue] = useState('');
   const [files, setFiles] = useState([]);
@@ -115,24 +115,26 @@ export default function WelcomeModuleComponent({ config, onConfigChange }) {
       bg="gray.50"
       borderRadius="lg"
     >
-      <VStack spacing={4} justify="center">
-        <Button
-          variant="outline"
-          size="sm"
-          leftIcon={<LuFileImage />}
-          onClick={() => inputRef.current.click()}
-        >
-          上传图片
-        </Button>
-        <input
-          type="file"
-          ref={inputRef}
-          accept="image/*"
-          style={{ display: 'none' }}
-          onChange={handleUpload}
-        />
-        <CustomFileUpload files={files} removeFile={removeFile} />
-      </VStack>
+      {showSettings && (
+        <VStack spacing={4} justify="center">
+          <Button
+            variant="outline"
+            size="sm"
+            leftIcon={<LuFileImage />}
+            onClick={() => inputRef.current.click()}
+          >
+            上传图片
+          </Button>
+          <input
+            type="file"
+            ref={inputRef}
+            accept="image/*"
+            style={{ display: 'none' }}
+            onChange={handleUpload}
+          />
+          <CustomFileUpload files={files} removeFile={removeFile} />
+        </VStack>
+      )}
 
       <VStack spacing={1} textAlign="center">
         {/* 姓名 */}
