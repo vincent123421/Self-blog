@@ -2,9 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
   Box,
   VStack,
-  HStack,
   Text,
-  Avatar,
   Divider,
   Input,
   Button,
@@ -54,7 +52,11 @@ const CustomFileUpload = ({ files, removeFile }) => {
   );
 };
 
-export default function WelcomeModuleComponent({ config, onConfigChange, showSettings = true }) {
+export default function WelcomeModuleComponent({
+  config,
+  onConfigChange,
+  showSettings = true,
+}) {
   const [editing, setEditing] = useState(null);
   const [value, setValue] = useState('');
   const [files, setFiles] = useState([]);
@@ -63,7 +65,10 @@ export default function WelcomeModuleComponent({ config, onConfigChange, showSet
 
   const handleUpload = (e) => {
     const file = e.target.files[0];
-    if (!file) return;
+    if (!file) {
+      e.target.value = '';
+      return;
+    }
     if (!file.type.startsWith('image/')) {
       toast({
         title: '文件类型错误',
@@ -72,9 +77,11 @@ export default function WelcomeModuleComponent({ config, onConfigChange, showSet
         duration: 3000,
         isClosable: true,
       });
+      e.target.value = '';
       return;
     }
     setFiles([file]); // 只保留1个文件
+    e.target.value = '';
   };
 
   const removeFile = (fileName) => {
