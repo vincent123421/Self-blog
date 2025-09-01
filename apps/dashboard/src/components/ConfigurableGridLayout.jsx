@@ -168,7 +168,7 @@ const ConfigurableGridLayout = React.forwardRef(
           // 🔥 修复输入框跳动的关键：禁止在输入框上拖拽
           draggableCancel=".no-drag, input, textarea, button, [contenteditable]"
           // 可选：只有 .drag-handle 才能拖拽
-          // draggableHandle=".drag-handle"
+          draggableHandle=".drag-handle"
         >
           {modules.map((module) => (
             <Box key={module.id} className="grid-item">
