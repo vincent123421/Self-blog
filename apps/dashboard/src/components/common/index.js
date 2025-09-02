@@ -1,3 +1,3 @@
 export { default as InlineTextEditor } from './InlineTextEditor';
-export { default as FileUpload } from './FileUpload';
+export { default as ImageUpload } from './ImageUpload';
 export { default as DynamicForm } from './DynamicForm';

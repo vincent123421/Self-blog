@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { LuFileImage, LuX } from 'react-icons/lu';
 
-const FileUpload = ({
+const ImageUpload = ({
   files = [],
   onFilesChange,
   accept = 'image/*',
@@ -30,10 +30,10 @@ const FileUpload = ({
     }
 
     // 验证文件类型
-    const invalidFiles = selectedFiles.filter(file => 
-      accept === 'image/*' && !file.type.startsWith('image/')
+    const invalidFiles = selectedFiles.filter(
+      (file) => accept === 'image/*' && !file.type.startsWith('image/')
     );
-    
+
     if (invalidFiles.length > 0) {
       toast({
         title: '文件类型错误',
@@ -47,7 +47,7 @@ const FileUpload = ({
     }
 
     // 限制文件数量
-    const newFiles = multiple 
+    const newFiles = multiple
       ? [...files, ...selectedFiles].slice(0, maxFiles)
       : selectedFiles.slice(0, 1);
 
@@ -56,7 +56,7 @@ const FileUpload = ({
   };
 
   const removeFile = (fileName) => {
-    const updatedFiles = files.filter(file => file.name !== fileName);
+    const updatedFiles = files.filter((file) => file.name !== fileName);
     onFilesChange?.(updatedFiles);
   };
 
@@ -71,7 +71,7 @@ const FileUpload = ({
       >
         {buttonText}
       </Button>
-      
+
       <input
         type="file"
         ref={inputRef}
@@ -87,6 +87,7 @@ const FileUpload = ({
             <Box
               key={file.name}
               position="relative"
+              margin="auto" //居中
               w={previewSize}
               h={previewSize}
               borderRadius="md"
@@ -118,4 +119,4 @@ const FileUpload = ({
   );
 };
 
-export default FileUpload;
+export default ImageUpload;

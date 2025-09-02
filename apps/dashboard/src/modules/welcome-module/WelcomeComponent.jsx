@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  VStack,
-  Divider,
-} from '@chakra-ui/react';
-import { InlineTextEditor, FileUpload } from '../../components/common';
+import { Box, VStack, Divider } from '@chakra-ui/react';
+import { InlineTextEditor, ImageUpload } from '../../components/common';
 
 export default function WelcomeModuleComponent({
   config,
@@ -29,7 +25,7 @@ export default function WelcomeModuleComponent({
     >
       {showSettings && (
         <VStack spacing={4} justify="center">
-          <FileUpload
+          <ImageUpload
             files={files}
             onFilesChange={setFiles}
             buttonText="上传头像"
