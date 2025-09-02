@@ -1,41 +1,68 @@
 import React from 'react';
-import { Box, Text, VStack, Badge, Progress } from '@chakra-ui/react';
+import { Box, Text as ChakraText, VStack, Badge, Progress } from '@chakra-ui/react';
+import { InlineTextEditor } from '../../components/common';
 
-function TestModuleComponent({ config }) {
+function TestModuleComponent({ config, onConfigChange, showSettings = true }) {
+  const isEditable = showSettings;
+  const handleConfigChange = (field, value) => {
+    onConfigChange?.({ ...config, [field]: value });
+  };
   return (
     <VStack spacing={3} align="stretch" height="100%">
       <Box>
-        <Text fontSize="lg" fontWeight="bold" color="blue.600">
-          {config?.title || '测试模块'}
-        </Text>
-        <Text fontSize="sm" color="gray.600" mt={1}>
-          {config?.description || '这是一个可拖拽和缩放的测试模块'}
-        </Text>
+        <InlineTextEditor
+          value={config?.title}
+          onChange={(value) => handleConfigChange('title', value)}
+          placeholder="测试模块"
+          disabled={!isEditable}
+          textProps={{
+            fontSize: 'lg',
+            fontWeight: 'bold',
+            color: 'blue.600',
+          }}
+        />
+        <InlineTextEditor
+          value={config?.description}
+          onChange={(value) => handleConfigChange('description', value)}
+          placeholder="这是一个可拖拽和缩放的测试模块"
+          disabled={!isEditable}
+          textProps={{
+            fontSize: 'sm',
+            color: 'gray.600',
+            mt: 1,
+          }}
+        />
       </Box>
       
       <Box>
-        <Text fontSize="sm" fontWeight="medium" mb={2}>
-          自定义消息:
-        </Text>
-        <Text fontSize="md" p={2} bg="gray.50" borderRadius="md">
-          {config?.message || 'Hello from Test Module!'}
-        </Text>
+        <InlineTextEditor
+          value={config?.message}
+          onChange={(value) => handleConfigChange('message', value)}
+          placeholder="Hello from Test Module!"
+          disabled={!isEditable}
+          textProps={{
+            fontSize: 'md',
+            p: 2,
+            bg: 'gray.50',
+            borderRadius: 'md',
+          }}
+        />
       </Box>
       
       <Box>
-        <Text fontSize="sm" fontWeight="medium" mb={2}>
+        <ChakraText fontSize="sm" fontWeight="medium" mb={2}>
           进度示例:
-        </Text>
+        </ChakraText>
         <Progress value={config?.progress || 65} colorScheme="blue" size="sm" />
-        <Text fontSize="xs" color="gray.500" mt={1}>
+        <ChakraText fontSize="xs" color="gray.500" mt={1}>
           {config?.progress || 65}% 完成
-        </Text>
+        </ChakraText>
       </Box>
       
       <Box>
-        <Text fontSize="sm" fontWeight="medium" mb={2}>
+        <ChakraText fontSize="sm" fontWeight="medium" mb={2}>
           标签示例:
-        </Text>
+        </ChakraText>
         <Box>
           <Badge colorScheme="green" mr={2} mb={1}>React</Badge>
           <Badge colorScheme="blue" mr={2} mb={1}>Grid</Badge>

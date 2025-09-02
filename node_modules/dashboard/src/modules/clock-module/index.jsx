@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Text, VStack, HStack, Icon } from '@chakra-ui/react';
+import { Box, Text as ChakraText, VStack, HStack, Icon } from '@chakra-ui/react';
 import { TimeIcon } from '@chakra-ui/icons';
 
 function ClockModuleComponent({ config }) {
@@ -35,32 +35,32 @@ function ClockModuleComponent({ config }) {
     <VStack spacing={3} align="center" justify="center" height="100%">
       <HStack spacing={2}>
         <Icon as={TimeIcon} color="blue.500" boxSize={5} />
-        <Text fontSize="lg" fontWeight="bold" color="blue.600">
+        <ChakraText fontSize="lg" fontWeight="bold" color="blue.600">
           {config?.title || '实时时钟'}
-        </Text>
+        </ChakraText>
       </HStack>
       
       <Box textAlign="center">
-        <Text fontSize="2xl" fontWeight="bold" color="gray.800" fontFamily="mono">
+        <ChakraText fontSize="2xl" fontWeight="bold" color="gray.800" fontFamily="mono">
           {formatTime(time)}
-        </Text>
-        <Text fontSize="sm" color="gray.600" mt={1}>
+        </ChakraText>
+        <ChakraText fontSize="sm" color="gray.600" mt={1}>
           {formatDate(time)}
-        </Text>
+        </ChakraText>
       </Box>
       
       {config?.showSeconds !== false && (
         <Box>
-          <Text fontSize="xs" color="gray.500">
+          <ChakraText fontSize="xs" color="gray.500">
             秒数: {time.getSeconds()}
-          </Text>
+          </ChakraText>
         </Box>
       )}
       
       <Box>
-        <Text fontSize="xs" color="gray.500">
+        <ChakraText fontSize="xs" color="gray.500">
           {config?.description || '当前时间'}
-        </Text>
+        </ChakraText>
       </Box>
     </VStack>
   );
