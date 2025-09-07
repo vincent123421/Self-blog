@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const location = useLocation();
-  
+
   return (
     <Box bg="blue.500" color="white" py={4}>
       <Container maxW="container.xl">
@@ -27,6 +27,14 @@ const Header = () => {
               colorScheme="whiteAlpha"
             >
               Editor
+            </Button>
+            <Button
+              as={Link}
+              to="/articles"
+              variant={location.pathname === '/articles' ? 'solid' : 'ghost'}
+              colorScheme="whiteAlpha"
+            >
+              Articles
             </Button>
           </Flex>
         </Flex>
