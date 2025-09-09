@@ -1,0 +1,93 @@
+/* 参考 VSCode markdown 预览样式的核心部分 */
+.vscode-markdown-body {
+  font-family:
+    'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  color: #24292e;
+  background: #fff;
+  line-height: 1.7;
+  font-size: 16px;
+  padding: 0;
+}
+.vscode-markdown-body h1,
+.vscode-markdown-body h2,
+.vscode-markdown-body h3,
+.vscode-markdown-body h4,
+.vscode-markdown-body h5,
+.vscode-markdown-body h6 {
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+.vscode-markdown-body h1 {
+  font-size: 2em;
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+.vscode-markdown-body h2 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+.vscode-markdown-body h3 {
+  font-size: 1.25em;
+}
+.vscode-markdown-body h4 {
+  font-size: 1.1em;
+}
+.vscode-markdown-body h5 {
+  font-size: 1em;
+}
+.vscode-markdown-body h6 {
+  font-size: 0.9em;
+}
+.vscode-markdown-body p {
+  margin: 1em 0;
+}
+.vscode-markdown-body ul,
+.vscode-markdown-body ol {
+  margin: 1em 0 1em 2em;
+}
+.vscode-markdown-body li {
+  margin: 0.3em 0;
+}
+.vscode-markdown-body code {
+  background: #f6f8fa;
+  color: #24292e;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+.vscode-markdown-body pre {
+  background: #f6f8fa;
+  padding: 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.97em;
+}
+.vscode-markdown-body blockquote {
+  color: #6a737d;
+  border-left: 4px solid #dfe2e5;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #f8f8fa;
+}
+.vscode-markdown-body table {
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+.vscode-markdown-body th,
+.vscode-markdown-body td {
+  border: 1px solid #dfe2e5;
+  padding: 0.5em 1em;
+}
+.vscode-markdown-body a {
+  color: #0366d6;
+  text-decoration: underline;
+}
+.vscode-markdown-body hr {
+  border: none;
+  border-top: 1px solid #eaecef;
+  margin: 2em 0;
+}
